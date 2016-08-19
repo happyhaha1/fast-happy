@@ -47,6 +47,7 @@ configure(subprojects - project(":fast-happy-webui")) { subproject ->
 
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
+
     dependencies {
         compileOnly (
                 "org.projectlombok:lombok:${lomboxVersion}"

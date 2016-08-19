@@ -1,6 +1,7 @@
 package cn.kxlove.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
@@ -14,6 +15,7 @@ import javax.persistence.*;
 @Table(name = "user")
 @Data
 @RequiredArgsConstructor
+@NoArgsConstructor
 public class User {
 
     @Id
