@@ -6,4 +6,5 @@ include 'fast-happy-servicer-interface'
 include 'fast-happy-service-impl'
 include 'fast-happy-controller'
 include 'fast-happy-webui'
+include 'fast-happy-test'
 

@@ -1,6 +1,8 @@
 package cn.kxlove.model;
 
 import lombok.Data;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 
@@ -11,13 +13,14 @@ import javax.persistence.*;
 @Entity
 @Table(name = "user")
 @Data
+@RequiredArgsConstructor
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String name;
+    @NonNull private String name;
 
-    private String phone;
+    @NonNull private String phone;
 }
