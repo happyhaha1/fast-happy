@@ -1,0 +1,9 @@
+rootProject.name = 'fast-happy'
+include 'fast-happy-util'
+include 'fast-happy-model'
+include 'fast-happy-dao'
+include 'fast-happy-servicer-interface'
+include 'fast-happy-service-impl'
+include 'fast-happy-controller'
+include 'fast-happy-webui'
+

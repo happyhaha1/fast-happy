@@ -1,0 +1,44 @@
+plugins {
+    id "com.moowork.node" version "0.11"
+}
+
+apply plugin: 'base'
+version '0.0.1'
+
+buildDir = 'dist'
+
+node {
+    version = '5.2.0'
+    npmVersion = '3.3.12'
+    download = true
+}
+
+task bundle(type: NpmTask) {
+    inputs.dir(new File('assets'))
+    inputs.dir(new File('src'))
+    outputs.dir(new File('dist'))
+    args = ['run', 'bundle']
+}
+
+task start(type: NpmTask) {
+    args = ['start']
+}
+
+task dev_server(type: NpmTask) {
+    args = ['run','dev-server']
+}
+
+task npm_build(type: NpmTask) {
+    args = ['run','build']
+}
+
+npm_build.dependsOn(npm_install)
+
+idea {
+    module {
+        inheritOutputDirs = false
+        outputDir = file("${buildDir}/classes/main")
+        testOutputDir = file("${buildDir}/classes/test")
+        downloadSources = true
+    }
+}

@@ -1,0 +1,53 @@
+group 'cn,kxlove'
+version '1.0.0'
+
+allprojects {
+    apply plugin: 'idea'
+}
+
+subprojects {
+
+    buildscript {
+        ext {
+            springBootVersion = '1.4.0.RELEASE'
+        }
+        repositories {
+            maven {
+                url "http://uk.maven.org/maven2"
+            }
+            maven {
+                url "file:///usr/local/maven/repository"
+            }
+        }
+        dependencies {
+            classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+            classpath "se.transmode.gradle:gradle-docker:1.2"
+        }
+    }
+
+    repositories {
+        maven {
+            url "http://uk.maven.org/maven2"
+        }
+        maven {
+            url "file:///usr/local/maven/repository"
+        }
+    }
+
+
+}
+
+gradle.projectsEvaluated {
+    gradle.rootProject {
+        ideaModule.enabled = true
+        idea {
+            project {
+                // modules = subprojects*.idea.module
+                // 如果某个子项目的 ideaModule 设置为 false，则不会在 idea 中生成 module
+                def modulesToInclude = subprojects.findAll {it.ideaModule.enabled == true}
+                modules = modulesToInclude.idea.module
+            }
+        }
+    }
+}
+
