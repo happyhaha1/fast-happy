@@ -6,6 +6,7 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 /**
  * @author: happyhaha
@@ -25,4 +26,14 @@ public class User {
     @NonNull private String name;
 
     @NonNull private String phone;
+
+    @Column(name = "create_time")
+    private LocalDateTime createTime;
+
+    @PrePersist
+    public void prePersist() {
+        createTime = LocalDateTime.now();
+    }
+
+
 }

@@ -31,11 +31,12 @@ public class UserRepositoryTester {
     public void testExample() throws Exception {
 //        entityManager.persist(new User("sboot","1234"));
         this.entityManager.persist(new User("sboot2", "1234"));
-        User findUser = this.userRepository.findByName("sboot");
+        User findUser = this.userRepository.findByName("sboot2");
+        System.out.println(findUser.getCreateTime());
         assertThat(findUser.getName()).isEqualTo("sboot");
         assertThat(findUser.getPhone()).isEqualTo("1234");
 
-        Integer deleteByName = this.userRepository.deleteByName("sboot3");
-        assertThat(deleteByName).isGreaterThanOrEqualTo(1);
+//        Integer deleteByName = this.userRepository.deleteByName("sboot3");
+//        assertThat(deleteByName).isGreaterThanOrEqualTo(1);
     }
 }
